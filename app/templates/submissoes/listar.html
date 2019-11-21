@@ -1,0 +1,24 @@
+{% extends "site.html" %}
+
+{% block main %}
+	<h2>Lista</h2>
+	<table class="table">
+		<tr>
+			<th>Evento</th>
+			<th>Título</th>
+			<th>Usuários</th>
+			<th>Ações</th>
+		</tr>
+		{% for id, evento, titulo, usuarios in submissoes %}
+		<tr>
+			<td>{{ evento }}</td>
+			<td>{{ titulo }}</td>
+			<td>{{ usuarios }}</td>
+			<td>
+				<a href="/submissoes/cadastrar?id={{ id }}">editar</a>
+				<a href="/submissoes/apagar?id={{ id }}">apagar</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

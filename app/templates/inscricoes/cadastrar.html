@@ -1,0 +1,28 @@
+{% extends "site.html" %}
+
+{% block main %}
+	<h2>Cadastro</h2>
+	<form action="/inscricoes/inserir" method="post">
+		<div>
+			<label>Nome:</label>
+			<input name="nome" type="text" />
+		</div>
+		<div>
+			<label>E-mail:</label>
+			<input name="email" type="email" />
+		</div>
+		<div>
+			<label>Evento:</label>
+			<select name="evento">
+			{% for id, titulo in eventos %}
+				<option value="{{ id }}">{{ titulo }}</option>
+			{% endfor %}
+			</select>
+		</div>
+		<div>
+			<input type="submit" />
+			<input type="reset" />
+		</div>
+
+	</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "site.html" %}
+
+{% block main %}
+	<h2>Cadastro</h2>
+	<form method="post" action="/eventos/inserir">
+		<div>
+			<label>Título:</label>
+			<input name="titulo" type="text" value="{{ evento['titulo'] }}" />
+		</div>
+		<div>
+			<label>Data e hora:</label>
+			<input name="data" type="datetime-local" value="{{ evento['data'].strftime('%Y-%m-%dT%H:%M') }}" />
+		</div>
+		<div>
+			<label>Descrição:</label>
+			<textarea name="descricao"></textarea>
+		</div>
+		<div>
+			<label>Imagem de divulgação:</label>
+			<input name="imagem" type="file" />
+		</div>
+		<div>
+			<input type="submit" />
+			<input type="reset" />
+		</div>
+
+	</form>
+{% endblock %}

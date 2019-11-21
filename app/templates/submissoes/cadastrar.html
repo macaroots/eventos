@@ -1,0 +1,41 @@
+
+{% extends "site.html" %}
+
+{% block main %}
+	<h2>Cadastro</h2>
+	<form action="/submissoes/inserir" method="post">
+		<div>
+			<label>Evento:</label>
+			<select name="evento">
+			{% for id, titulo in eventos %}
+				<option value="{{ id }}">{{ titulo }}</option>
+			{% endfor %}
+			</select>
+		</div>
+		<div>
+			<label>Título:</label>
+			<input name="titulo" type="text" />
+		</div>
+		<div>
+			<label>Resumo:</label>
+			<textarea name="resumo"></textarea>
+		</div>
+		<div>
+			<label>Usuários:</label>
+			<select name="usuarios" multiple>
+			{% for id, titulo in usuarios %}
+				<option value="{{ id }}">{{ titulo }}</option>
+			{% endfor %}
+			</select>
+		</div>
+		<div>
+			<label>Arquivo (PDF):</label>
+			<input name="arquivo" type="file" />
+		</div>
+		<div>
+			<input type="submit" />
+			<input type="reset" />
+		</div>
+
+	</form>
+{% endblock %}

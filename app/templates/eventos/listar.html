@@ -1,0 +1,26 @@
+{% extends "site.html" %}
+
+{% block titulo %}
+EVENTOS
+{% endblock %}
+
+{% block main %}
+	<h2>Lista</h2>
+	<table class="table">
+		<tr>
+			<th>Nome</th>
+			<th>Data/hora</th>
+			<th>Ações</th>
+		</tr>
+		{% for id, titulo, data in eventos %}
+		<tr>
+			<td>{{ titulo }}</td>
+			<td>{{ data }}</td>
+			<td>
+				<a href="/eventos/cadastrar/{{ id }}">editar</a>
+				<a href="/eventos/apagar?id={{ id }}">apagar</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
