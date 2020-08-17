@@ -5,8 +5,10 @@ Criar um ambiente virtual
   > python3 -m venv venv
 
 Ativar o ambiente virtual
+  
   No Linux:
   > . venv/bin/activate
+  
   No Windows:
   > venv\Scripts\activate
 
