@@ -15,7 +15,7 @@ def getConexao():
 
 @app.route('/')
 def teste():
-	return '{ok: true}'
+	return render_template('site.html')
 
 @app.route('/eventos/listar')
 def eventos_listar():
