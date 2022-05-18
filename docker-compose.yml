@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+  flask:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app/app
+    depends_on:
+      - mysql
+    networks:
+    #   - frontend
+      - backend
+
+  # mongodb:
+  #   image: mongo:4.0.8
+  #   container_name: mongodb
+  #   restart: unless-stopped
+  #   command: mongod --auth
+  #   env_file: .env
+  #   volumes:
+  #     - mongo_data:/data/db
+  #   networks:
+  #     - backend
+
+
+  mysql:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: .env
+    environment:
+      - MYSQL_HOST=mysql
+    # ports:
+    #   - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./eventos.sql:/docker-entrypoint-initdb.d/dump.sql
+    restart: always
+    networks:
+      - backend
+
+  # web:
+  #   image: nginx:mainline-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - nginxdata:/var/log/nginx
+  #     - ./nginx:/etc/nginx/conf.d
+  #     - ./selfsigned.crt:/etc/letsencrypt/live/tiia.com.br/fullchain.pem
+  #     - ./selfsigned.key:/etc/letsencrypt/live/tiia.com.br/privkey.pem
+  #   depends_on:
+  #     - flask
+  #   networks:
+  #     - frontend
+
+networks:
+#   frontend:
+#     driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  mysql_data:
+  # app:
+  nginxdata:

@@ -13,8 +13,8 @@
 			<td>{{ evento }}</td>
 			<td>{{ usuario }}</td>
 			<td>
-				<a href="/inscricoes/cadastrar?id={{ id }}">editar</a>
-				<a href="/inscricoes/apagar?id={{ id }}">apagar</a>
+				<a href="/inscricoes/form/{{ id }}">editar</a>
+				<a href="/inscricoes/apagar/{{ id }}">apagar</a>
 			</td>
 		</tr>
 		{% endfor %}

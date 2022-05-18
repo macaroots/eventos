@@ -2,7 +2,7 @@
 
 {% block main %}
 	<h2>Cadastro</h2>
-	<form method="post" action="/eventos/inserir">
+	<form method="post" action="/eventos/inserir/{{ id }}">
 		<div>
 			<label>Título:</label>
 			<input name="titulo" type="text" value="{{ evento['titulo'] }}" />

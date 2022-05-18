@@ -15,8 +15,8 @@
 			<td>{{ titulo }}</td>
 			<td>{{ usuarios }}</td>
 			<td>
-				<a href="/submissoes/cadastrar?id={{ id }}">editar</a>
-				<a href="/submissoes/apagar?id={{ id }}">apagar</a>
+				<a href="/submissoes/form/{{ id }}">editar</a>
+				<a href="/submissoes/apagar/{{ id }}">apagar</a>
 			</td>
 		</tr>
 		{% endfor %}
