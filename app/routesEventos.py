@@ -35,7 +35,7 @@ def eventos_inserir(id='0'):
         acao = 'alterado'
         daoEventos.update(bean, id)
 
-    return 'Registro #{} {} com sucesso{}!'.format(id, acao, bean)
+    return 'Registro #{} {} com sucesso!'.format(id, acao)
 
 @app.route('/eventos/form', methods=['GET', 'POST'])
 @app.route('/eventos/form/<id>', methods=['GET', 'POST'])

@@ -1,4 +1,5 @@
 import pymongo
+from bson.objectid import ObjectId
 
 class DAO:
 	def __init__(self, collectionName='collection1'):
@@ -30,14 +31,28 @@ class DAO:
 		id = collection.insert_one(bean)
 		return id.inserted_id
 	
-	def update(self, row, id):
-		return self.execute(sql, row + (id, ))
+	def update(self, bean, id):
+		query = {"_id": ObjectId(id)}
+		values = {"$set": bean}
+
+		collection = self.getCollection()
+		return collection.update_one(query, values)
 
 	def delete(self, id):
-		return self.execute(sql, (id, ))
+		query = {"_id": ObjectId(id)}
+
+		collection = self.getCollection()
+		result = collection.delete_one(query)
+		
+		return result
 		
 	def findOne(self, id):
-		return row
+		query = {"_id": ObjectId(id)}
+
+		collection = self.getCollection()
+		bean = collection.find_one(query)
+		
+		return bean
 
 	def getDBName(self):
 		return 'db'
