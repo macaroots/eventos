@@ -57,7 +57,7 @@ class DAO:
 
     def query(self, sql, args=None):
         connection = self.connect()
-        cursor = connection.cursor()
+        cursor = connection.cursor(dictionary=True)
         
         cursor.execute(sql, args)
         rows = cursor.fetchall()
