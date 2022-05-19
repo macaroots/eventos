@@ -5,20 +5,22 @@ services:
     build: .
     restart: unless-stopped
     env_file: .env
+    environment:
+      - MYSQL_HOST=mysql
+      - MONGO_HOST=mongo
     ports:
       - "5000:5000"
     volumes:
       - ./app:/app/app
     depends_on:
-      - mongodb
+      - mongo
       - mysql
     networks:
     #   - frontend
       - backend
 
-  mongodb:
+  mongo:
     image: mongo:4.0.8
-    container_name: mongodb
     restart: unless-stopped
     command: mongod --auth
     env_file: .env
@@ -31,8 +33,6 @@ services:
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
     env_file: .env
-    environment:
-      - MYSQL_HOST=mysql
     # ports:
     #   - "3306:3306"
     volumes:

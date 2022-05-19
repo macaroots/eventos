@@ -1,3 +1,4 @@
+import os
 import mysql.connector
 
 class DAO:
@@ -5,11 +6,16 @@ class DAO:
         pass
             
     def connect(self):
+        host = os.environ['MYSQL_HOST']
+        user = os.environ['MYSQL_USER']
+        password = os.environ['MYSQL_PASSWORD']
+        db = os.environ['MYSQL_DATABASE']
+        
         connection = mysql.connector.connect(
-            host='mysql',
-            user='root',
-            password='admin',
-            database='eventos'
+            host=host,
+            user=user,
+            password=password,
+            database=db
         )
         return connection
         

@@ -1,3 +1,4 @@
+import os
 import pymongo
 from bson.objectid import ObjectId
 
@@ -6,7 +7,10 @@ class DAO:
 		self.collectionName = collectionName
 			
 	def connect(self):
-		connection = pymongo.MongoClient("mongodb://root:admin@mongodb:27017/")
+		user = os.environ['MONGO_INITDB_ROOT_USERNAME']
+		password = os.environ['MONGO_INITDB_ROOT_PASSWORD']
+		host = os.environ['MONGO_HOST']
+		connection = pymongo.MongoClient("mongodb://{}:{}@{}:27017/".format(user, password, host))
 		return connection
 
 	def getCollection(self):
