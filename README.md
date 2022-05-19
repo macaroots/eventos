@@ -35,3 +35,6 @@ FLASK_DEBUG=1
 
 2. Ligar o Docker
   > docker-compose up
+
+## Acessar
+ > http://localhost:5000
