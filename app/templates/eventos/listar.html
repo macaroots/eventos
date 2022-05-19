@@ -12,7 +12,9 @@ EVENTOS
 			<th>Data/hora</th>
 			<th>Ações</th>
 		</tr>
-		{% for id, titulo, data in eventos %}
+		{% for evento in eventos %}
+			{% set id, titulo, data = evento.values() %}
+			{{ evento }}
 		<tr>
 			<td>{{ titulo }}</td>
 			<td>{{ data }}</td>

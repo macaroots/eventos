@@ -10,22 +10,22 @@ services:
     volumes:
       - ./app:/app/app
     depends_on:
+      - mongodb
       - mysql
     networks:
     #   - frontend
       - backend
 
-  # mongodb:
-  #   image: mongo:4.0.8
-  #   container_name: mongodb
-  #   restart: unless-stopped
-  #   command: mongod --auth
-  #   env_file: .env
-  #   volumes:
-  #     - mongo_data:/data/db
-  #   networks:
-  #     - backend
-
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod --auth
+    env_file: .env
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend
 
   mysql:
     image: mysql:8

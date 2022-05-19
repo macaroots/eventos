@@ -8,13 +8,13 @@
 			<th>Usuário</th>
 			<th>Ações</th>
 		</tr>
-		{% for evento, usuario in inscricoes %}
+		{% for idEvento, evento, idUsuario, usuario in inscricoes %}
 		<tr>
 			<td>{{ evento }}</td>
 			<td>{{ usuario }}</td>
 			<td>
-				<a href="/inscricoes/form/{{ id }}">editar</a>
-				<a href="/inscricoes/apagar/{{ id }}">apagar</a>
+				<a href="/inscricoes/form/{{ idEvento }}/{{ idUsuario }}">editar</a>
+				<a href="/inscricoes/apagar/{{ idEvento }}/{{ idUsuario }}">apagar</a>
 			</td>
 		</tr>
 		{% endfor %}
