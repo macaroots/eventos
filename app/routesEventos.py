@@ -2,15 +2,8 @@ import datetime
 from flask import render_template
 from flask import request
 from app import app
+from app import daoEventos
 
-# Escolha o DAO, tirando ou colocando # na linha 7. Com #: Mongo. Sem #: Mysql.
-#'''
-from app.dao import dao_mongo
-daoEventos = dao_mongo.DAO('eventos')
-'''
-from app.dao import dao_mysql
-daoEventos = dao_mysql.DAOEventos()
-''' #'''
 
 @app.route('/eventos/listar')
 def eventos_listar():

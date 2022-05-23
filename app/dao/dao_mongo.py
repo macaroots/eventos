@@ -23,7 +23,7 @@ class DAO:
 		pass
 		
 	def dropDB(self):
-		del self.pessoas
+		pass
 		
 	def list(self, columns='*'):
 		collection = self.getCollection()

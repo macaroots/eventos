@@ -2,11 +2,9 @@ import datetime
 from flask import render_template
 from flask import request
 from app import app
-from app.dao import dao_mysql
-
-daoEventos = dao_mysql.DAOEventos()
-daoInscricoes = dao_mysql.DAOInscricoes()
-daoUsuarios = dao_mysql.DAOUsuarios()
+from app import daoEventos
+from app import daoInscricoes
+from app import daoUsuarios
 
 @app.route('/')
 def teste():
