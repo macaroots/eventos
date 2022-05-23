@@ -14,11 +14,11 @@
 		<div>
 			<label>Evento:</label>
 			<select name="evento">
-			{% for id, titulo in eventos %}
-				{% if id == idEvento|int %}
+			{% for evento in eventos %}
+				{% if evento.id == idEvento|int %}
 					{% set checked = ' selected' %}
 				{% endif %}
-				<option value="{{ id }}"{{ checked }}>{{ titulo }}</option>
+				<option value="{{ evento.id }}"{{ checked }}>{{ evento.titulo }}</option>
 			{% endfor %}
 			</select>
 		</div>
