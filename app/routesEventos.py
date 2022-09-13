@@ -5,11 +5,11 @@ from app import app
 from app import daoEventos
 
 
-@app.route('/eventos/listar')
-def eventos_listar():
-    eventos = daoEventos.list('id, titulo, data')
+# @app.route('/eventos/listar')
+# def eventos_listar():
+#     eventos = daoEventos.list('id, titulo, data')
     
-    return render_template('eventos/listar.html', eventos=eventos)
+#     return render_template('eventos/listar.html', eventos=eventos)
 
 @app.route('/eventos/apagar/<id>', methods=['GET', 'POST'])
 def eventos_delete(id):

@@ -5,7 +5,7 @@ app = Flask(__name__,
             static_folder='static')
 
 # Escolha o DAO, tirando ou colocando # na linha 7. Com #: Mongo. Sem #: Mysql.
-#'''
+'''
 from app.dao import dao_mongo
 daoEventos = dao_mongo.DAO('eventos')
 '''
@@ -18,4 +18,11 @@ daoInscricoes = dao_mysql.DAOInscricoes()
 daoUsuarios = dao_mysql.DAOUsuarios()
 
 from app import routes
-from app import routesEventos
+# from app import routesEventos
+
+from app.controller import crud
+controllerEventos = crud.CrudEventos(daoEventos)
+controllerEventos.registerEndpoints('/eventos/')
+
+controllerUsuario = crud.CrudUsuario(daoUsuarios)
+controllerUsuario.registerEndpoints('/usuarios/')
